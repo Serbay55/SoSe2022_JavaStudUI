@@ -16,6 +16,7 @@ public class Student{
 	
 	public void registerStudent(Student s) throws InputTypeError {
 		s.setName(sc.nextLine());
+		s.secureStringsetter(s);
 		
 		/*s.setName(sc.nextLine());
 		s.setSurname(sc.nextLine());
