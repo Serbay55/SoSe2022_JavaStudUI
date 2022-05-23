@@ -13,11 +13,59 @@ public class Student{
 	JavaSkill capability;
 	String hiredCompany;
 	
-	ArrayList<ArrayList<Student>> studentenliste = new ArrayList<ArrayList <Student>>();
+	//ArrayList<ArrayList<Student>> studentenliste = new ArrayList<ArrayList <Student>>();
+	ArrayList<ArrayList<Student>> studlist = new ArrayList<ArrayList<Student>>();
+	public List<String> kursnamen = new ArrayList<String>();
 	
-	public void registerStudent(Student s) throws InputTypeError {
+	
+	public void createnewcourse(String s) {
+		s = sc.nextLine();
+		Kurse kurs = new Kurse(s);
+		System.out.println(kurs.getStudents());
+		//c.setKursname(sc.nextLine());
+		/*ArrayList<Student> innerlist = new ArrayList<Student>();
+		for(int i = 0; i<studlist.size();i++) {
+			if(studlist.get(i) == null) {
+				studlist.add(innerlist);
+				break;
+			} else {
+				continue;
+			}
+		}*/
+		/*
+		 * Um einen neuen Kurs zu erstellen, wollen wir wissen, ob an jeglicher Stelle unserer Liste ein Kurs bereits besteht und wenn nicht, dann soll
+		 * er ebenfalls an der ersten Stelle seiner Liste nichts beinhalten, da dieser immer unseren Kursnamen beinhalten soll.
+		 * */
+		for(int i = 0; i < studlist.size(); i++) {
+				//for(int j= 0; j< studlist.get(i).size(); j++) {
+				if(studlist.get(i) == null && studlist.get(i).get(0) == null) {
+					Student x = new Student();
+					x.setName(sc.nextLine());
+					studlist.get(i).set(0, x);
+				}
+			//}
+		}
+		
+		
+	}
+	
+	public void registerStudent(int course) throws InputTypeError {
+		Student s = new Student();
 		s.setName(sc.nextLine());
 		s.secureStringsettername(s);
+		s.setSurname(sc.nextLine());
+		s.secureStringsettersurname(s);
+		s.setCapability(capability); //soll noch per GUI gelöst werden, ich würde aber sagen, dass das Standardwert bei Beginner sein sollte.
+		s.setHiredCompany(sc.nextLine());
+		for(int j = 0; j < studlist.get(course).size(); j++) {
+			if(studlist.get(course).get(0) == null) {
+				System.err.println("Kursname wurde nicht deklariert, bitte Kursnamen deklarieren, bevor sie Studenten einfügen");
+				break; //hier soll noch ein return to Main Menu geben. 
+			} else if(studlist.get(course).get(j) == null && j != 0){
+				studlist.get(course).set(j, s);
+			}
+		}
+		
 		
 		/*s.setName(sc.nextLine());
 		s.setSurname(sc.nextLine());
@@ -25,6 +73,8 @@ public class Student{
 		s.setHiredCompany(sc.nextLine());
 		s.setCapability(capability);
 		studentenliste.add(s);*/
+
+		//studentenliste.get(0).set(0, s);
 	}
 	
 	public void secureStringsettername(Student s) {
@@ -35,7 +85,6 @@ public class Student{
 				strbuild.append(c);
 			}
 		}
-		s.name = null;
 		s.name = strbuild.toString();
 	}
 	public void secureStringsettersurname(Student s) {
@@ -46,7 +95,6 @@ public class Student{
 				strbuild.append(c);
 			}
 		}
-		s.surname = null;
 		s.surname = strbuild.toString();
 	}
 
@@ -84,8 +132,13 @@ public class Student{
 	}
 }
 
- enum Course{
-	TINF21AI2, TINF21AI1; // Man sollte auch Kurse verwalten können, dies ist erstmal außer Acht zu lassen.
+ class Course{
+	String kursname; // Man sollte auch Kurse verwalten können, dies ist erstmal außer Acht zu lassen.
+	
+	public String setKursname(String kursname) {
+		this.kursname = kursname;
+		return kursname;
+	}
 }
  enum JavaSkill{
 	 Beginner, Amateur, Mediocre, Experienced, Professional, Maniac;

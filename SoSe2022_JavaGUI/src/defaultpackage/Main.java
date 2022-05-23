@@ -1,5 +1,8 @@
 package defaultpackage;
+import java.util.Scanner;
 
+import backend.Kurse;
+import backend.Student;
 public class Main {
 
 	public static void main(String[] args) {
@@ -12,7 +15,12 @@ public class Main {
 		 * Rajaa und Serbay --> Backend
 		 * Rafael --> Datenbank
 		 */
-
+		/*Scanner sc = new Scanner(System.in);
+		Kurse kurs = new Kurse(sc.nextLine());
+		System.out.println(kurs.getName());
+		System.out.println(kurs.getStudents());
+		kurs.addStudent(new Student());
+		System.out.println(kurs.getStudents());*/
 
 	}
 
