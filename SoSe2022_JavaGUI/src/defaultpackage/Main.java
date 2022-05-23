@@ -6,7 +6,11 @@ public class Main {
 		/**
 		 * Hier einfach nochmal eure Aufgaben eintragen, die ihr euch zugefügt habt und der Meinung seid, dass ihr dies übernehmen möchtet
 		 *
-		 * Test
+		 * Am Donnerstag hatten wir ja folgende Aufteilung besprochen:
+		 *
+		 * Tobias und Lukas --> Frontend
+		 * Rajaa und Serbay --> Backend
+		 * Rafael --> Datenbank
 		 */
 
 
