@@ -6,13 +6,14 @@ import java.util.ArrayList;
 
 public class Student{
 	Scanner sc = new Scanner(System.in);
+	String kurse;
 	String name;
 	String surname;
-	Course kurs;
+	//Course kurs;
 	JavaSkill capability;
 	String hiredCompany;
 	
-	List studentenliste = new ArrayList();
+	ArrayList<ArrayList<Student>> studentenliste = new ArrayList<ArrayList <Student>>();
 	
 	public void registerStudent(Student s) throws InputTypeError {
 		s.setName(sc.nextLine());
@@ -49,13 +50,6 @@ public class Student{
 		s.surname = strbuild.toString();
 	}
 
-	public Course getKurs() {
-		return kurs;
-	}
-
-	public void setKurs(Course kurs) {
-		this.kurs = kurs;
-	}
 
 	public JavaSkill getCapability() {
 		return capability;
@@ -91,12 +85,12 @@ public class Student{
 }
 
  enum Course{
-	TINF21AI2;
+	TINF21AI2, TINF21AI1; // Man sollte auch Kurse verwalten können, dies ist erstmal außer Acht zu lassen.
 }
  enum JavaSkill{
 	 Beginner, Amateur, Mediocre, Experienced, Professional, Maniac;
  }
  enum CourseRoom{
-	 B048;
+	 B048, B040;
  }
  
