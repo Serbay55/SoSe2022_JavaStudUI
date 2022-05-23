@@ -16,7 +16,7 @@ public class Student{
 	
 	public void registerStudent(Student s) throws InputTypeError {
 		s.setName(sc.nextLine());
-		s.secureStringsetter(s);
+		s.secureStringsettername(s);
 		
 		/*s.setName(sc.nextLine());
 		s.setSurname(sc.nextLine());
@@ -26,7 +26,7 @@ public class Student{
 		studentenliste.add(s);*/
 	}
 	
-	public void secureStringsetter(Student s) {
+	public void secureStringsettername(Student s) {
 		char[] ch = s.name.toCharArray();
 		StringBuilder strbuild = new StringBuilder();
 		for(char c : ch) {
@@ -36,6 +36,17 @@ public class Student{
 		}
 		s.name = null;
 		s.name = strbuild.toString();
+	}
+	public void secureStringsettersurname(Student s) {
+		char[] ch = s.surname.toCharArray();
+		StringBuilder strbuild = new StringBuilder();
+		for(char c : ch) {
+			if(Character.isAlphabetic(c)) {
+				strbuild.append(c);
+			}
+		}
+		s.surname = null;
+		s.surname = strbuild.toString();
 	}
 
 	public Course getKurs() {
