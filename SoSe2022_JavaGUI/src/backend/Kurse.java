@@ -28,14 +28,13 @@ public class Kurse {
 		public void removeStudent(Student s) {
 			String checker;
 			checker = sc.nextLine();
-			if(checker.toLowerCase() == s.id.toLowerCase()) {
-				for(int x = 0; x < students.size(); x++) {
-					if(students.get(x).id.toLowerCase() == checker.toLowerCase()) {
-						students.remove(x);
-					}
+			for(int i = 0; i < students.size(); i++) {
+				if(students.get(i).id.toLowerCase() == checker.toLowerCase()) {
+					students.remove(i);
+					break;
+				} else {
+					System.err.println("Der angegebene Identifikator für den gesuchten Studenten ist nicht existent bitte schauen Sie in die Studentenliste");
 				}
-			} else {
-				System.err.println("Der angegebene Identifikator für den gesuchten Studenten ist nicht existent bitte schauen Sie in die Studentenliste");
 			}
 		}
 		public void registerStudent(int course) throws InputTypeError {
