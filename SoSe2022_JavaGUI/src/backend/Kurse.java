@@ -26,48 +26,37 @@ public class Kurse {
 			this.name = name;
 		}
 		public void removeStudent(Student s) {
-			students.remove(s);
-		}
-		public void createnewcourse(String s) {
-			s = sc.nextLine();
-			Kurse kurs = new Kurse(s);
-			System.out.println(kurs.getStudents());
-			for(int i = 0; i < students.size(); i++) {
-					if(students.get(i) == null) {
-						Student x = new Student();
-						x.setName(sc.nextLine());
-						students.set(i, x);
+			String checker;
+			checker = sc.nextLine();
+			if(checker.toLowerCase() == s.id.toLowerCase()) {
+				for(int x = 0; x < students.size(); x++) {
+					if(students.get(x).id.toLowerCase() == checker.toLowerCase()) {
+						students.remove(x);
 					}
-				
+				}
+			} else {
+				System.err.println("Der angegebene Identifikator für den gesuchten Studenten ist nicht existent bitte schauen Sie in die Studentenliste");
 			}
-			
-			
 		}
-		public void secureStringsettername(Student s) {
-			char[] ch = s.name.toCharArray();
-			StringBuilder strbuild = new StringBuilder();
-			for(char c : ch) {
-				if(Character.isAlphabetic(c)) {
-					strbuild.append(c);
+		public void registerStudent(int course) throws InputTypeError {
+			Student s = new Student();
+			s.setName(sc.nextLine());
+			s.secureStringsettername(s);
+			s.setSurname(sc.nextLine());
+			s.secureStringsettersurname(s);
+			s.setHiredCompany(sc.nextLine());
+			int identCounter = 0;
+			for(int i = 0; i < students.size(); i++) {
+				if(students.get(i).id != null) {
+					identCounter++;
+				} else if(students.get(i).id == null) {
+					String newID;
+					newID = name +":"+ identCounter;
+					students.get(i).id = newID;
 				}
 			}
-			s.name = strbuild.toString();
+			
 		}
-		public void secureStringsettersurname(Student s) {
-			char[] ch = s.surname.toCharArray();
-			StringBuilder strbuild = new StringBuilder();
-			for(char c : ch) {
-				if(Character.isAlphabetic(c)) {
-					strbuild.append(c);
-				}
-			}
-			s.surname = strbuild.toString();
-		}
-		enum JavaSkill{
-			 Beginner, Amateur, Mediocre, Experienced, Professional, Maniac;
-		 }
-		 enum CourseRoom{
-			 B048, B040;
-		 }
+
 }
 

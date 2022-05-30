@@ -12,6 +12,7 @@ public class Student{
 	//Course kurs;
 	JavaSkill capability;
 	String hiredCompany;
+	String id;
 	
 	//ArrayList<ArrayList<Student>> studentenliste = new ArrayList<ArrayList <Student>>();
 	ArrayList<ArrayList<Student>> studlist = new ArrayList<ArrayList<Student>>();
